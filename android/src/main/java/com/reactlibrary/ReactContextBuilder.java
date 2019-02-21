@@ -133,9 +133,7 @@ public class ReactContextBuilder {
     private void addNativeModules(ReactApplicationContext reactContext, NativeModuleRegistryBuilder nativeRegistryBuilder) {
         for (int i = 0; i < reactPackages.size(); i++) {
             ReactPackage reactPackage = reactPackages.get(i);
-            for (NativeModule nativeModule : reactPackage.createNativeModules(reactContext)) {
-                nativeRegistryBuilder.addNativeModule(nativeModule);
-            }
+            nativeRegistryBuilder.processPackage(reactPackage);
         }
     }
 }
